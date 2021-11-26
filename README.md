@@ -6,6 +6,34 @@ In this project we have an agent running around in a 2D environment filled with 
 
 #Setup
 This was done in the Udacity Workspace, but can be done locally on Windows, Mac, or Linux.  Follow these instructions from the program to do so.  
+
+First we must create a new environment.
+##Windows
+conda create --name dqn python=3.6 
+activate dqn
+
+##Linux or Mac
+conda create --name dqn python=3.6
+source activate dqn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Install Conda on Windows.
 Create a env Conda using Python 3.6
 conda create --name drlnd python=3.6 
@@ -14,9 +42,8 @@ conda create --name drlnd python=3.6
 conda activate drlnd
 4. Within this environment, you will need to install the necessary packages. There are several options for this, as you can install all packages manually using PIP or clone an existing conda environment.
 
-4.1 Install Packages using PIP. First of all, you should go to your workspace, and download all your work using the following command in a cell from your notebook:
+4.1 Install Packages using PIP.
  
-
 !tar chvfz notebook.tar.gz *
 Then, unzip this file, and go to the directory where you unzipped it. In this directory, open a terminal and introduce the next command to move to the python folder.
 
