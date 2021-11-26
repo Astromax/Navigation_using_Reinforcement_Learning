@@ -7,65 +7,41 @@ In this project we have an agent running around in a 2D environment filled with 
 #Setup
 This was done in the Udacity Workspace, but can be done locally on Windows, Mac, or Linux.  Follow these instructions from the program to do so.  
 
-First we must create a new environment.
-##Windows
-conda create --name dqn python=3.6 
-activate dqn
+* Perform a minimal install of OpenAI gym
+	* If using __Windows__, 
+		* download swig for windows and add it the PATH of windows
+		* install Microsoft Visual C++ Build Tools
+	* then run these commands
+	```bash
+	pip install gym
+	pip install gym[classic_control]
+	pip install gym[box2d]
+	```
+* Install the dependencies under the folder python/
+```bash
+	cd python
+	pip install .
+```
+* Create an IPython kernel for the `dqn` environment
+```bash
+	python -m ipykernel install --user --name dqn --display-name "dqn"
+```
+* Download the Unity Environment (thanks to Udacity) which matches your operating system
+	* [Linux](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
+	* [Mac OSX](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
+	* [Windows (32-bits)](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
+	* [Windows (64 bits)](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
 
-##Linux or Mac
-conda create --name dqn python=3.6
-source activate dqn
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Install Conda on Windows.
-Create a env Conda using Python 3.6
-conda create --name drlnd python=3.6 
-3. Activate this env.
-
-conda activate drlnd
-4. Within this environment, you will need to install the necessary packages. There are several options for this, as you can install all packages manually using PIP or clone an existing conda environment.
-
-4.1 Install Packages using PIP.
- 
-!tar chvfz notebook.tar.gz *
-Then, unzip this file, and go to the directory where you unzipped it. In this directory, open a terminal and introduce the next command to move to the python folder.
-
-cd python
-Using the terminal in this folder, introduce the next command in order to install all the packages:
-
-pip install .
-In case of problems with some of the packages, just remove it from the requirements.txt file and try to install it manually. I seem to remember that the torch==0.4.0 package is missing. If this installation gives you your problem, there are two solutions:
-
-1) Modify the torch==0.4.1 file, as this version is also supported.
-
-2) Install torch==0.4.0 manually: Download torch 0.4.0 wheel from http://download.pytorch.org/whl/cpu/torch-0.4.0-cp36-cp36m-win_amd64.whl. Once downloaded, introduce:
-
-pip install --no-deps FILE-PATH\torch-0.4.0-cp36-cp36m-win_amd64.whl
-4.2. The second solution (in case that the previous one does not work) consist into clone an existing conda env. To avoid problems with package insertion, I have exported my conda environment to you, and you can easily clone it. To download it, click on this link.
-4.2.1. Create (and activate) a new environment with Python 3.6 via Anaconda.
-conda create --name your_env_name python=3.6
-4.2.2. Clone the repository, and navigate to the python/ folder
-conda env create -f environment_DRL.yml
+* Start jupyter notebook from the root of this python codes
+```bash
+jupyter notebook
+```
+* Once started, change the kernel through the menu `Kernel`>`Change kernel`>`dqn`
+* If necessary, inside the ipynb files, change the path to the unity environment appropriately
 
 
-#Running the code
+*Running the code 
+
 The central notebook is self-contained, if you have access to Udacity's Workspace then just run every cell in order and it will work.
 
 
