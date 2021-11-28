@@ -44,6 +44,6 @@ jupyter notebook
 
 *Running the code 
 
-The central notebook is self-contained, if you have access to Udacity's Workspace then just run every cell in order and it will work.
+Once the Jupyter environment is set up, upload qnetworks.py, replays.py, navagents.py, and the main notebook to the directory.  Assuming the workspace has all the dependencies already setup (as the Udacity Workspace did), then one should be able to run the main notebook cell-by-cell to reproduce the results.  The main notebook is arguably just an organizer, the real work was done in writing replays.py and navagents.py, indeed it looks like the prioritized replay needs some pretty serious optimization to be truly functional.
 
 
