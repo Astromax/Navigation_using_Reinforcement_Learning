@@ -13,7 +13,7 @@ import torch.nn.functional as F
 
 
 class OldQNetwork(nn.Module):
-    def __init__(self, state_size: int, action_size: int, seed: int, fc1_units: int=64, fc2_units: int=64):
+    def __init__(self, state_size: int, action_size: int, seed: int=37, fc1_units: int=64, fc2_units: int=64):
         """Initialize parameters and build model"""
         super(OldQNetwork, self).__init__()
         self.seed = torch.manual_seed(seed)
@@ -31,7 +31,7 @@ class OldQNetwork(nn.Module):
 
 #Somewhat larger Q-network with 2 hidden layers
 class BaseQNetwork(nn.Module):
-    def __init__(self, state_size: int, action_size: int, seed: int, fc1_units: int=64, fc2_units: int=64, fc3_units: int=64):
+    def __init__(self, state_size: int, action_size: int, seed: int=37, fc1_units: int=64, fc2_units: int=64, fc3_units: int=64):
         super(BaseQNetwork, self).__init__()
         self.seed = torch.manual_seed(seed)
 
@@ -54,7 +54,7 @@ class DuelingQNetwork(nn.Module):
     Q(s,a) = A(s,a) + V(s)
     Here we are using Q(s,a) = V(s) + A(s,a) - mean(A), as this allows the two functions to be learned more properly
     """
-    def __init__(self, state_size: int, action_size: int, seed: int, fc1_units: int=64, fc2_units: int=64, fc3_units: int=32):
+    def __init__(self, state_size: int, action_size: int, seed: int=37, fc1_units: int=64, fc2_units: int=64, fc3_units: int=32):
         super(DuelingQNetwork, self).__init__()
         self.seed = torch.manual_seed(seed)
         
@@ -68,16 +68,16 @@ class DuelingQNetwork(nn.Module):
         x = state
         #Ensure state is the right type, sometimes it's a batch (training), other times it's
         #a single state (interaction)
-        if not isinstance(x, torch.tensor):
-            x = torch.tensor(x, device=self.device, dtype=torch.float32)
-            x = x.unsqueeze(0)
+        #if not isinstance(x, torch.tensor):
+        #    x = torch.tensor(x, device=self.device, dtype=torch.float32)
+        #    x = x.unsqueeze(0)
 
         x = F.relu(self.fc1(x))
         x = F.relu(self.fc2(x))
         x = F.relu(self.fc3(x))
         a = self.advantage(x)
 
-        v = self.value(v)
+        v = self.value(x)
         v = v.expand_as(a)
 
         q = v + a - a.mean(1, keepdim=True).expand_as(a) 
